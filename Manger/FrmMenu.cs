@@ -23,7 +23,7 @@ namespace Mnager
             if (new FrmStudents().ShowDialog() == DialogResult.OK)
                 this.Show();
         }
-
+        
         private void btnPerson_Click(object sender, EventArgs e)
         {
             this.Hide();
