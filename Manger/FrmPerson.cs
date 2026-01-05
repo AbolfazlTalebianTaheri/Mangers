@@ -63,15 +63,12 @@ namespace Mnager
                 Person = new Person();
             else
                 isEdite = true;
-            string FirestName = txtFirstName.Text;
-            string lastName = txtLastName.Text;
-            string nationalCode = txtNationalCode.Text;
-            OperionResult operionResult = Person.IsValidinput(FirestName, lastName, nationalCode);
-            if (operionResult.IsSuccess == true)
+                Person.FirstName = txtFirstName.Text;
+                Person.LastName = txtLastName.Text;
+                Person.NationalCode = txtNationalCode.Text;
+            OperionResult operionResult = Person.IsValidinput();
+            if (operionResult.IsSuccess)
             {
-                Person.FirstName = FirestName;
-                Person.LastName = lastName;
-                Person.NationalCode = nationalCode;
                 if (rdbMan.Checked)
                     Person.Gender = Genders.Man;
                 else
@@ -95,7 +92,10 @@ namespace Mnager
                     DialogResult = DialogResult.OK;
             }
             else
+            {
                 MessageBox.Show(operionResult.Message);
+                Person = null;
+            }
         }
 
         private void txtNationalCode_KeyPress(object sender, KeyPressEventArgs e)

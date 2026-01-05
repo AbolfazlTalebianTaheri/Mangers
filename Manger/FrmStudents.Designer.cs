@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnViewTeacher = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.ColFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +59,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.btnViewTeacher);
             this.splitContainer1.Panel1.Controls.Add(this.btnAdd);
             // 
             // splitContainer1.Panel2
@@ -69,16 +67,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(570, 442);
             this.splitContainer1.SplitterDistance = 113;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // btnViewTeacher
-            // 
-            this.btnViewTeacher.Location = new System.Drawing.Point(455, 31);
-            this.btnViewTeacher.Name = "btnViewTeacher";
-            this.btnViewTeacher.Size = new System.Drawing.Size(103, 58);
-            this.btnViewTeacher.TabIndex = 0;
-            this.btnViewTeacher.Text = "نمایش معلم ها";
-            this.btnViewTeacher.UseVisualStyleBackColor = true;
-            this.btnViewTeacher.Click += new System.EventHandler(this.btnAddTeacher_Click);
             // 
             // btnAdd
             // 
@@ -165,6 +153,7 @@
             this.NationalCode.MinimumWidth = 6;
             this.NationalCode.Name = "NationalCode";
             this.NationalCode.ReadOnly = true;
+            this.NationalCode.Width = 125;
             // 
             // ColLastName
             // 
@@ -256,7 +245,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnViewTeacher;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn GenderTxt;

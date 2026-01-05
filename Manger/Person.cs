@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
+using Manger;
 namespace Mnager
 {
-    public  class Person
+    public class Person
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "کادر نام پر کنید")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "کادر نام خوانوادگی را پرکنید")]
         public string LastName { get; set; }
+        [IsValidNationalCode]
         public string NationalCode { get; set; }
         public Genders Gender { get; set; }
         public virtual string GetFullName
@@ -78,40 +83,26 @@ namespace Mnager
             }
             return valid;
         }
-        public static OperionResult IsValidinput(string firstName, string lastName, string nationalCode)
+        public OperionResult IsValidinput()
         {
-            bool isNationalCode = IsNationalCode(nationalCode);
-            if (string.IsNullOrEmpty(firstName))
+            StringBuilder sb = new StringBuilder();
+            List<ValidationResult> valid = new List<ValidationResult>();
+            var validationContext = new ValidationContext(this);
+            bool res = Validator.TryValidateObject(this, validationContext, valid,true);
+            if (!res)
+            {
+                foreach (var item in valid)
+                    sb.AppendLine(item.ErrorMessage);
                 return new OperionResult
                 {
-                    IsSuccess = false,
-                    Message = "کادر نام پر کنید"
+                    Message = sb.ToString(),
+                    IsSuccess = false
                 };
-            else
-            if (string.IsNullOrEmpty(lastName))
-                return new OperionResult
-                {
-                    IsSuccess = false,
-                    Message = "کادر نام خوانوادگی را پرکنید"
-                };
-            else
-                if (string.IsNullOrEmpty(nationalCode))
-                return new OperionResult
-                {
-                    IsSuccess = false,
-                    Message = "کادر کد ملی را پرکنید"
-                };
-            else
-                if (!isNationalCode)
-                return new OperionResult
-                {
-                    IsSuccess = false,
-                    Message = "کدملی خود را درست وارد کنید"
-                };
+            }
             return new OperionResult
             {
-                IsSuccess = true,
-                Message = "عملیات با موفقیت انجام شد"
+                Message = Messages.Success,
+                IsSuccess = true
             };
         }
     }

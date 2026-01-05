@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,12 +48,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertHelper.cs" />
+    <Compile Include="BaseClass.cs" />
+    <Compile Include="CostomAttribute.cs" />
+    <Compile Include="DgvExtentions.cs" />
     <Compile Include="Field Of Study.cs" />
     <Compile Include="FrmAddTeacher.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAddTeacher.Designer.cs">
       <DependentUpon>FrmAddTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDgvLessons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDgvLessons.Designer.cs">
+      <DependentUpon>FrmDgvLessons.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMenu.cs">
       <SubType>Form</SubType>
@@ -92,6 +102,10 @@
     </Compile>
     <Compile Include="Genders.cs" />
     <Compile Include="Grades.cs" />
+    <Compile Include="IsValidNationalCodeAttribute.cs" />
+    <Compile Include="Lessons.cs" />
+    <Compile Include="LessonsManger.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="OperatianResultEdit.cs" />
     <Compile Include="OperionResult.cs" />
     <Compile Include="OpertianResualtTeacher.cs" />
@@ -108,6 +122,9 @@
     </Compile>
     <EmbeddedResource Include="FrmAddTeacher.resx">
       <DependentUpon>FrmAddTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDgvLessons.resx">
+      <DependentUpon>FrmDgvLessons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>

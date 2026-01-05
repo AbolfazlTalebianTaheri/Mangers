@@ -68,9 +68,10 @@ namespace Mnager
 
         private void FrmTeacher_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = AlertHelper.Question("آیا از خروج اطمینان دارید");
-            if(result == DialogResult.No)
+            DialogResult checkExit = AlertHelper.Question("آیا از خروج مطمِن هستید");
+            if (checkExit == DialogResult.No)
                 e.Cancel = true;
+            DialogResult = DialogResult.OK;
         }
     }
 }

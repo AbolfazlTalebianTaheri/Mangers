@@ -34,9 +34,15 @@ namespace Mnager
         private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = AlertHelper.Question("از خزوج مطمئن هستید ؟");
-            if (result == DialogResult.Yes)
-                Application.Exit();
-            
+            if (result == DialogResult.No)
+                e.Cancel = true;
+        }
+
+        private void btnViewTeacher_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (new FrmTeacher().ShowDialog() == DialogResult.OK)
+                this.Show();
         }
     }
 }

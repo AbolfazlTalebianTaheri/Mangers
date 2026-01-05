@@ -11,4 +11,9 @@ namespace Mnager
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
     }
+    public class OperionResult<T> : OperionResult
+    {
+        public T Data { get; set; }
+        
+    }
 }

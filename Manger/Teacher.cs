@@ -1,6 +1,8 @@
 ﻿
+using Manger;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +11,9 @@ namespace Mnager
 {
     public class Teacher : Person
     {
+        [Required]
         public string PhonNumber { get; set; }
+        [Required]
         public string Locatioan { get; set; }
         public Field_Of_Study Study { get; set; }
         public static OperionResult IsValidinput(string firstName, string lastName, string location, string phoneNumber, string nationalCode)
@@ -18,36 +22,36 @@ namespace Mnager
                 return new OperionResult
                 {
                     IsSuccess = false,
-                    Message = "کادر نام پر کنید"
+                    Message = Messages.FirstName
                 };
             else if (string.IsNullOrEmpty(lastName))
                 return new OperionResult
                 {
                     IsSuccess = false,
-                    Message = "کادر نام خوانوادگی را پرکنید"
+                    Message = Messages.LastName
                 };
             else if (string.IsNullOrEmpty(location))
                 return new OperionResult
                 {
                     IsSuccess = false,
-                    Message = "آدرس خود را درست وارد کنید"
+                    Message = Messages.Location
                 };
             else if (string.IsNullOrEmpty(nationalCode))
                 return new OperionResult
                 {
                     IsSuccess = false,
-                    Message = "کد ملی خود را درست وارد کنید"
+                    Message = Messages.NationalDode
                 };
             else if (string.IsNullOrEmpty(phoneNumber))
                 return new OperionResult
                 {
-                    IsSuccess =false,
-                    Message="شماره همراه خود را وارد کنید"
+                    IsSuccess = false,
+                    Message = Messages.PhoneNumber
                 };
             return new OperionResult
             {
                 IsSuccess = true,
-                Message = "عملیات با موفقیت انجام شد"
+                Message = Messages.Success
             };
         }
     }
